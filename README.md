@@ -38,15 +38,33 @@ Commands:
   set-current-course   Sets the current course to point to a directory
 ```
 
-- Unzip the `LSL-E-lightbend-scala-language-expert.zip` archive in a location of your choice.
+- Unzip the `lunatech-scala-2-to-scala3-course.zip` archive in a location of your choice.
 
 - Set the current course the the *Scala Language Expert* course by running the
-  `cmtc set-root` command. For example, assuming you unzipped the course in a folder
-  `Courses` in your home directory, you should run the following command:
+  `cmtc set-root` command. `cd` into the unzipped folder and run the `cmtc set-root` command
+  as follows:
 
 ```bash
-$ cmtc set-current-course -s ~/Courses/LSL-E-lightbend-scala-language-expert
-Current course set to '~/Courses/LSL-E-lightbend-scala-language-expert'
+$ cd lunatech-scala-2-to-scala3-course
+
+$ cmtc set-current-course -s .
+Current course set to '/Users/ericloots/tmp/stu/lunatech-scala-2-to-scala3-course/.'
+
+Exercises in repository:
+  1.  *   exercise_000_sudoku_solver_initial_state
+  2.      exercise_001_dotty_deprecated_syntax_rewriting
+  3.      exercise_002_dotty_new_syntax_and_indentation_based_syntax
+  4.      exercise_003_top_level_definitions
+  5.      exercise_004_parameter_untupling
+  6.      exercise_005_extension_methods
+  7.      exercise_006_using_and_summon
+  8.      exercise_007_givens
+  9.      exercise_008_enum_and_export
+ 10.      exercise_009_union_types
+ 11.      exercise_010_opaque_type_aliases
+ 12.      exercise_011_multiversal_equality
+ 13.      exercise_020_opaque_type_aliases_alt
+ 14.      exercise_021_multiversal_equality
 ```
 
 We can verify this operation by running the `cmtc list-exercises` command to display
@@ -54,44 +72,30 @@ the exercises in the course:
 
 ```bash
 $ cmtc list-exercises
-  1.  *   exercise_000_initial_state
-  2.      exercise_001_tail_recursive_operation
-  3.      exercise_002_use_forall_and_sliding
-  4.      exercise_003_folding
-  5.      exercise_004_calculate_connections_I
-  6.      exercise_005_calculate_connections_II
-  7.      exercise_006_calculate_connections_III
-  8.      exercise_007_calculate_connections_IV
-  9.      exercise_008_calculate_connections_V
- 10.      exercise_009_custom_value_classes
- 11.      exercise_010_create_a_queue_I
- 12.      exercise_011_create_a_queue_II
- 13.      exercise_012_create_a_queue_III
- 14.      exercise_013_covariance
- 15.      exercise_014_upper_bounds
- 16.      exercise_015_lower_bounds
- 17.      exercise_016_feeding_animals_outline
- 18.      exercise_017_feeding_animals
- 19.      exercise_018_implicit_conversions_I
- 20.      exercise_019_implicit_conversions_II
- 21.      exercise_020_extend_my_library
- 22.      exercise_021_type_classes
- 23.      exercise_022_context_bounds
- 24.      exercise_023_implicit_parameter_chaining
- 25.      exercise_024_group_exercise_custom_control_abstractions
- 26.      exercise_025_custom_control_abstractions
- 27.      exercise_026_DSL_for_time
- 28.      exercise_027_DSL_for_train
- 29.      exercise_028_calculate_connections_async
+  1.  *   exercise_000_sudoku_solver_initial_state
+  2.      exercise_001_dotty_deprecated_syntax_rewriting
+  3.      exercise_002_dotty_new_syntax_and_indentation_based_syntax
+  4.      exercise_003_top_level_definitions
+  5.      exercise_004_parameter_untupling
+  6.      exercise_005_extension_methods
+  7.      exercise_006_using_and_summon
+  8.      exercise_007_givens
+  9.      exercise_008_enum_and_export
+ 10.      exercise_009_union_types
+ 11.      exercise_010_opaque_type_aliases
+ 12.      exercise_011_multiversal_equality
+ 13.      exercise_020_opaque_type_aliases_alt
+ 14.      exercise_021_multiversal_equality
 ```
 
 ## Verifying `sbt` and the course
 
-A quick verification of your Java and sbt setup can be performed as follows:
+A quick verification of your Java and sbt setup can be performed as follows
+(assuming you're in the unzipped exercises folder):
+
+
 
 ```bash
-$ cd ~/Courses/LSL-E-lightbend-scala-language-expert
-
 $ cd code
 
 $ sbt
@@ -100,51 +104,29 @@ $ sbt
 <elided>
 ...
 
-sbt:LSL-E-lightbend-scala-language-expert> test
-[info] compiling 3 Scala sources to /Users/ericloots/tmp/stu/LSL-E-lightbend-scala-language-expert/code/target/scala-2.13/classes ...
-[info] compiling 4 Scala sources to /Users/ericloots/tmp/stu/LSL-E-lightbend-scala-language-expert/code/target/scala-2.13/test-classes ...
-[info] TimeSpec:
-[info] Creating a Time
-[info] - should throw an IllegalArgumentException for hours not within 0 and 23
-[info] - should throw an IllegalArgumentException for minutes not within 0 and 59
-[info] The default arguments for hours and minutes
-[info] - should be equal to 0
-[info] asMinutes
-[info] - should be initialized correctly
-[info] Calling minus or -
-[info] - should return the correct difference in minutes
-[info] Calling toString
-[info] - should return a properly formatted string representation
-[info] Calling Ordered operators
-[info] - should work as expected
-[info] TrainSpec:
-[info] Train 'green'
-[info] - should stop in Nuremberg
-[info] - should not stop in Essen
-[info] Train 'red'
-[info] - should stop in Munich
-[info] - should not stop in Stuttgart
-[info] Creating a Train
-[info] - should throw an IllegalArgumentException for a schedule with 0 or 1 elements
-[info] stations
-[info] - should be initialized correctly
-[info] JourneyPlannerSpec:
-[info] stations
-[info] - should be initialized correctly
-[info] Calling trainsAt
-[info] - should return the correct trains
-[info] Calling stopsAt
-[info] - should return the correct stops
-[info] Calling isShortTrip
-[info] - should return false for more than one station in between
-[info] - should return true for zero or one stations in between
-[info] Run completed in 412 milliseconds.
-[info] Total number of tests run: 18
-[info] Suites: completed 3, aborted 0
-[info] Tests: succeeded 18, failed 0, canceled 0, ignored 0, pending 0
-[info] All tests passed.
-[success] Total time: 6 s, completed 16 Feb 2023, 16:36:53
-sbt:LSL-E-lightbend-scala-language-expert>
+$ sbt test
+[info] welcome to sbt 1.8.2 (Eclipse Adoptium Java 11.0.18)
+[info] compiling 11 Scala sources to /Users/ericloots/tmp/stu/lunatech-scala-2-to-scala3-course/code/target/scala-2.13/classes ...
+[info] compiling 4 Scala sources to /Users/ericloots/tmp/stu/lunatech-scala-2-to-scala3-course/code/target/scala-2.13/test-classes ...
+org.lunatechlabs.dotty.sudoku.CellMappingSuite:
+org.lunatechlabs.dotty.sudoku.ReductionRuleSuite:
+  + Mapping row coordinates should result in correct column & block coordinates 0.021s
+  + Mapping column coordinates should result in correct row & block coordinates 0.001s
+  + Mapping block coordinates should result in correct row & column coordinates 0.001s
+  + Applying reduction rules should eliminate values in isolated complete sets from occurrences in other cells (First reduction rule) 0.047s
+  + Applying reduction rules should eliminate values in isolated complete sets of 5 values from occurrences in other cells (First reduction rule) 0.001s
+  + Applying reduction rules should eliminate values in 2 isolated complete sets of 3 values from occurrences in other cells (First reduction rule) 0.001s
+  + Applying reduction rules should eliminate values in shadowed complete sets from occurrences in same cells (Second reduction rule) 0.002s
+  + Applying reduction rules should eliminate values in shadowed complete (6 value) sets from occurrences in same cells (Second reduction rule) 0.0s
+SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+SLF4J: See also http://www.slf4j.org/codes.html#replay
+org.lunatechlabs.dotty.sudoku.SudokuDetailProcessorSuite:
+  + Sending no updates to a sudoku detail processor should result in sending a SudokuDetailUnchanged messsage 0.007s
+  + Sending an update to a fresh instance of the SudokuDetailProcessor that sets one cell to a single value should result in sending an update that reflects this update 0.002s
+  + Sending a series of subsequent Updates to a SudokuDetailProcessor should result in sending updates and ultimately return no changes 0.003s
+[info] Passed: Total 11, Failed 0, Errors 0, Passed 11
+[success] Total time: 5 s, completed 9 Mar 2023, 17:21:24
 ```
 
 *You're all set!*
