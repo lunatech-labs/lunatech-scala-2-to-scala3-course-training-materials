@@ -40,7 +40,7 @@ Commands:
 
 - Unzip the `lunatech-scala-2-to-scala3-course.zip` archive in a location of your choice.
 
-- Set the current course the the *Scala Language Expert* course by running the
+- Set the current course the the *Lunatech - Moving from Scala 2 to Scala 3* course by running the
   `cmtc set-root` command. `cd` into the unzipped folder and run the `cmtc set-root` command
   as follows:
 
